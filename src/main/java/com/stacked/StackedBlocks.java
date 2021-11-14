@@ -29,8 +29,8 @@ public class StackedBlocks {
         //array for holding the blocks after dimension rotation.
         Block[] rotatedBlocks = new Block[count];
 
-        for (int i = 0; i < count; i++) {
-            rotatedBlocks[i] = rotateBlockForMaxHeight(blockArr[i]);
+        for (int index = 0; index < count; index++) {
+            rotatedBlocks[index] = rotateBlockForMaxHeight(blockArr[index]);
         }
 
         //Sorting the blocks based on area, descending order.
@@ -39,9 +39,9 @@ public class StackedBlocks {
 
         int maxHeight = rotatedBlocks[0].getHeight();
 
-        for (int i = 1; i < count; i++) {
-            Block previousBlock = rotatedBlocks[i - 1];
-            Block currentBlock = rotatedBlocks[i];
+        for (int index = 1; index < count; index++) {
+            Block previousBlock = rotatedBlocks[index - 1];
+            Block currentBlock = rotatedBlocks[index];
             //checking the condition if current block can be placed on previous.
             if (previousBlock.getDepth() >= currentBlock.getDepth() && previousBlock.getWidth() >= currentBlock.getWidth() && previousBlock.getHeight() >= currentBlock.getHeight()) {
                 maxHeight = maxHeight + currentBlock.getHeight();
@@ -67,7 +67,6 @@ public class StackedBlocks {
      */
     private Block rotateBlockForMaxHeight(Block block) {
 
-
         Block b;
         if (block.getHeight() > block.getWidth() && block.getHeight() > block.getDepth()) {
             b = new Block(block.getHeight(), Math.min(block.getWidth(), block.getDepth()), Math.max(block.getWidth(), block.getDepth()));
@@ -79,7 +78,6 @@ public class StackedBlocks {
         //calculating and Setting area of base
         b.setArea(b.getWidth() * b.getDepth());
         return b;
-
 
     }
 
@@ -109,8 +107,6 @@ public class StackedBlocks {
                 System.out.println("Invalid input, input contains null/empty block.");
                 return false;
             }
-
-
         }
 
         //checking if dimension of all blocks are within constraints of >=1 and <=100
@@ -129,8 +125,6 @@ public class StackedBlocks {
 
 
         }
-
-
         return true;
     }
 }
